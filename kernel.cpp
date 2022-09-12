@@ -5,6 +5,10 @@ void printf(char* str) {
         VideoMemory[i] = (VideoMemory[i] & 0xFF00) | str[i];
 }
 
+// extern "C" constructor* start_ctors;
+// extern "C" constructor* end_ctors;
+
+
 extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnumber) {
     printf("hello");
 
