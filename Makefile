@@ -13,6 +13,7 @@ mykernel.bin: linker.ld $(objects)
 		ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 mykernel.iso: mykernel.bin
+		mkdir build
 		mkdir iso
 		mkdir iso/boot
 		mkdir iso/boot/grub
@@ -25,4 +26,7 @@ mykernel.iso: mykernel.bin
 		echo '	boot' >> iso/boot/grub/grub.cfg
 		echo '}' >> iso/boot/grub/grub.cfg
 		grub-mkrescue --output=$@ iso
-		
+		mv mykernel.bin build/
+		mv mykernel.iso build/
+		mv loader.o build/
+		mv kernel.o build/
